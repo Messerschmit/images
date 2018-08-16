@@ -1,0 +1,117 @@
+2018-08-15 20:15:26 [192.168.56.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.56.1
+2018-08-15 20:15:26 [192.168.56.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf-backend' => 'baf2e2e6152c201c42e5cfa27f52788020e46cc33d813c83c5a9aa2c2a2ac15fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"BJ6dOkB4PlU3mpJeHWdCuMgcg-gv-ax3\";}'
+    'advanced-backend' => 'lkhi44fnat5gmfuj6dkukrm1me'
+    'tu' => 'f9268ee1f1066fa96f2e026f8af031c1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+]
+
+$_SERVER = [
+    'USER' => 'www-user'
+    'HOME' => '/home/www-user'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '63887'
+    'SCRIPT_FILENAME' => '/var/www/project/backend/web/index.php'
+    'SERVER_ADMIN' => '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/project/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => '/var/www/project/backend/web'
+    'REMOTE_ADDR' => '192.168.56.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '192.168.56.101'
+    'SERVER_NAME' => 'admin.images.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.34 (Ubuntu)'
+    'SERVER_SIGNATURE' => ''
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.2 Safari/605.1.15'
+    'HTTP_COOKIE' => '_csrf-backend=baf2e2e6152c201c42e5cfa27f52788020e46cc33d813c83c5a9aa2c2a2ac15fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22BJ6dOkB4PlU3mpJeHWdCuMgcg-gv-ax3%22%3B%7D; advanced-backend=lkhi44fnat5gmfuj6dkukrm1me; tu=f9268ee1f1066fa96f2e026f8af031c1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_HOST' => 'admin.images.com'
+    'proxy-nokeepalive' => '1'
+    'HTTP_AUTHORIZATION' => ''
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1534364126.7963
+    'REQUEST_TIME' => 1534364126
+]
+2018-08-15 20:15:27 [192.168.56.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.56.1
+    in /var/www/project/backend/views/layouts/main.php:77
+    in /var/www/project/backend/controllers/SiteController.php:84
+2018-08-15 20:15:27 [192.168.56.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.56.1
+2018-08-15 20:15:26 [192.168.56.1][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf-backend' => 'baf2e2e6152c201c42e5cfa27f52788020e46cc33d813c83c5a9aa2c2a2ac15fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"BJ6dOkB4PlU3mpJeHWdCuMgcg-gv-ax3\";}'
+    'advanced-backend' => 'lkhi44fnat5gmfuj6dkukrm1me'
+    'tu' => 'f9268ee1f1066fa96f2e026f8af031c1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+]
+
+$_SERVER = [
+    'USER' => 'www-user'
+    'HOME' => '/home/www-user'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=site%2Flogin'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '63894'
+    'SCRIPT_FILENAME' => '/var/www/project/backend/web/index.php'
+    'SERVER_ADMIN' => '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/project/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => '/var/www/project/backend/web'
+    'REMOTE_ADDR' => '192.168.56.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '192.168.56.101'
+    'SERVER_NAME' => 'admin.images.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.34 (Ubuntu)'
+    'SERVER_SIGNATURE' => ''
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.2 Safari/605.1.15'
+    'HTTP_COOKIE' => '_csrf-backend=baf2e2e6152c201c42e5cfa27f52788020e46cc33d813c83c5a9aa2c2a2ac15fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22BJ6dOkB4PlU3mpJeHWdCuMgcg-gv-ax3%22%3B%7D; advanced-backend=lkhi44fnat5gmfuj6dkukrm1me; tu=f9268ee1f1066fa96f2e026f8af031c1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_HOST' => 'admin.images.com'
+    'proxy-nokeepalive' => '1'
+    'HTTP_AUTHORIZATION' => ''
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1534364126.9405
+    'REQUEST_TIME' => 1534364126
+]
