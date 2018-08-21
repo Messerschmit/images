@@ -8,16 +8,16 @@ use yii\web\NotFoundHttpException;
 
 class ProfileController extends Controller {
     
-    public function actionView($id)
+    public function actionView($nickname)
     {
         return $this->render('view', [
-            'user' => $this->findUserById($id),
+            'user' => $this->findUserByNickname($nickname),
         ]);
     }
     
-    private function findUserById($id)
+    private function findUserByNickname($nickname)
     {
-        if ($user = User::find()->where(['id' => $id])->one()){
+        if ($user = User::find()->where(['nickname' => $nickname])->orWhere(['id' => $nickname])->one()){
             return $user;
         } 
         
