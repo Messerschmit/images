@@ -6,6 +6,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\redis;
 
 /**
  * User model
@@ -194,5 +195,107 @@ class User extends ActiveRecord implements IdentityInterface
     public function getNickname()
     {
         return ($this->nickname) ? $this->nickname : $this->id;
+    }
+    
+    /*
+     * Subscribe current User to given User
+     * @param \frontend\models\User $user
+     */
+    
+    public function followUser(User $user)
+    {
+        $k1 = "user:{$this->getId()}:subscriptions";
+        $k2 = "user:{$user->getId()}:followers";
+        
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        
+        $redis->sadd($k1, $user->getId());
+        $redis->sadd($k2, $this->getId());
+        
+    }
+    
+    /*
+     * Subscribe current User to given User
+     * @param \frontend\models\User $user
+     */
+    public function unfollowUser(User $user) {
+        
+       $k1 = "user:{$this->getId()}:subscriptions"; 
+       $k2 = "user:{$user->getId()}:followers";
+       
+       /* @var $redis Connection */
+       $redis = Yii::$app->redis;
+       
+       $redis->srem($k1, $user->getId());
+       $redis->srem($k2, $this->getId());
+    }
+    
+    public function getSubscriptions(){
+        
+        /* @var $redis Connection */
+        
+        $redis = Yii::$app->redis;
+        
+        $key = "user:{$this->getId()}:subscriptions";
+        
+        $ids = $redis->smembers($key);
+        
+        return User::find()->select('id, username, nickname')->where(['id' => $ids])->orderBy('username')->asArray()->all();
+    }
+    
+    public function getFollowers() {
+     
+        /* @var $redis Connection */
+        
+        $redis = Yii::$app->redis;
+        
+        $key = "user:{$this->getId()}:followers";
+        
+        $ids = $redis->smembers($key);
+        
+        return User::find()->select('id, username, nickname')->where(['id' => $ids])->orderBy('username')->asArray()->all();
+    }
+    
+    /*
+     * @return mixed
+     */
+    public function countSubscriptions() {
+    
+        $redis = Yii::$app->redis;
+        
+        return $redis->scard("user:{$this->getId()}:subscriptions");
+        
+    }
+    
+    /*
+     * @return mixed
+     */
+    public function countFollowers() {
+        
+        $redis = Yii::$app->redis;
+        
+        return $redis->scard("user:{$this->getId()}:followers");
+    }
+
+
+    /*
+
+     * Find Mutual users in current User and given User
+     * @var /frontend/models/User
+     * @return array
+     */
+    public function getMutualSubscriptionsTo(User $user) {
+        
+        // Current user subscriptions
+        $key1 = "user:{$this->getId()}:subscriptions";
+        // Given user followers
+        $key2 = "user:{$user->getId()}:followers";
+        
+       /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        
+        $ids = $redis->sinter($key1, $key2);
+        return User::find()->select('id, username, nickname')->where(['id' => $ids])->orderBy('username')->asArray()->all();
     }
 }

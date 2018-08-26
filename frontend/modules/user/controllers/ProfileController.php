@@ -11,8 +11,12 @@ class ProfileController extends Controller {
     
     public function actionView($nickname)
     {
+        /* @var $currentUser User */
+        $currentUser = Yii::$app->user->identity;
+        
         return $this->render('view', [
             'user' => $this->findUserByNickname($nickname),
+            'currentUser' => $currentUser,
         ]);
     }
     
@@ -25,6 +29,49 @@ class ProfileController extends Controller {
         throw new NotFoundHttpException();
     }
     
+    public function actionSubscribe($id)
+    {
+        if (Yii::$app->user->isGuest){
+            return $this->redirect(['/user/default/login']);
+        }
+        
+        /* @var $currentUser User */
+        
+        $currentUser = Yii::$app->user->identity;
+        
+        $user = $this->findUserById($id);
+        
+        $currentUser->followUser($user);
+        
+        return $this->redirect(['/user/profile/view', 'nickname' => $user->getNickname()]);
+    }
+    
+    private function findUserById($id) {
+        if ($user = User::findOne($id)){
+            return $user;
+        }
+        
+        throw new NotFoundHttpException();
+    }
+    
+        public function actionUnsubscribe($id)
+    {
+        if (Yii::$app->user->isGuest){
+            return $this->redirect(['/user/default/login']);
+        }
+        
+        /* @var $currentUser User */
+        
+        $currentUser = Yii::$app->user->identity;
+        
+        $user = $this->findUserById($id);
+        
+        $currentUser->unfollowUser($user);
+        
+        return $this->redirect(['/user/profile/view', 'nickname' => $user->getNickname()]);
+    }
+
+
 //    public function actionGenerate()
 //    {
 //        $faker = \Faker\Factory::create();
