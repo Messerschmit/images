@@ -296,6 +296,27 @@ class User extends ActiveRecord implements IdentityInterface
         $redis = Yii::$app->redis;
         
         $ids = $redis->sinter($key1, $key2);
+        
         return User::find()->select('id, username, nickname')->where(['id' => $ids])->orderBy('username')->asArray()->all();
+    }
+    
+    /*
+
+     * Check if the user is a subscriber
+     * @param /frontend/models/User
+     * @return bool
+     *      */
+    public function isSubscriber(User $user) {
+        
+        $key = "user:{$user->getId()}:subscriptions";
+        
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        
+        if ($redis->sismember($key, $this->getId())){
+            return true;
+        }
+        
+        return false;
     }
 }
