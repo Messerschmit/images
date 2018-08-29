@@ -6,6 +6,8 @@ use yii\web\Controller;
 use frontend\models\User;
 use yii\web\NotFoundHttpException;
 use Yii;
+use frontend\modules\user\models\forms\PictureForm;
+use yii\web\UploadedFile;
 
 class ProfileController extends Controller {
     
@@ -14,9 +16,12 @@ class ProfileController extends Controller {
         /* @var $currentUser User */
         $currentUser = Yii::$app->user->identity;
         
+        $modelPicture = new PictureForm();
+                
         return $this->render('view', [
             'user' => $this->findUserByNickname($nickname),
             'currentUser' => $currentUser,
+            'modelPicture' => $modelPicture,
         ]);
     }
     
@@ -69,6 +74,31 @@ class ProfileController extends Controller {
         $currentUser->unfollowUser($user);
         
         return $this->redirect(['/user/profile/view', 'nickname' => $user->getNickname()]);
+    }
+    
+    /*
+
+     * Handle profile image upload via ajax request
+     */
+    public function actionUploadPicture()
+    {
+        $model = new PictureForm();
+        $model->picture = UploadedFile::getInstance($model, 'picture');
+
+        if ($model->validate()){
+            
+            $user = Yii::$app->user->identity;
+            
+            $user->picture = Yii::$app->storage->saveUploadedFile($model->picture);
+            
+            if ($user->save(false, ['picture'])){
+                print_r($user->attributes);die;
+            }
+        }
+        
+        echo '<pre>';
+        print_r($model->getErrors());
+        echo '</pre>';
     }
 
 

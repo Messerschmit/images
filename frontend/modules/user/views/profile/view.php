@@ -2,11 +2,13 @@
 /* @var $this yii\web\View */
 /* @var $user yii\frontend\models\User */
 /* @var $currentUser yii\frontend\models\User */
+/* @var $modelPicture frontend\modules\user\models\forms\PictureForm */
 
     use yii\helpers\Html;
     use yii\helpers\Url;
     use yii\helpers\HtmlPurifier;
-    use Yiil;
+    use dosamigos\fileupload\FileUpload;
+    use Yii;
 ?>
 
 
@@ -14,6 +16,30 @@
 <p><?= HtmlPurifier::process($user->about);?></p>
 
 <hr>
+
+<img src="<?php $user->getPicture(); ?>" alt="avatar">
+
+<?= FileUpload::widget([
+    'model' => $modelPicture,
+    'attribute' => 'picture',
+    'url' => ['/user/profile/upload-picture'], // your url, this is just for demo purposes,
+    'options' => ['accept' => 'image/*'],
+    'clientOptions' => [
+        'maxFileSize' => 2000000
+    ],
+    // Also, you can specify jQuery-File-Upload events
+    // see: https://github.com/blueimp/jQuery-File-Upload/wiki/Options#processing-callback-options
+    'clientEvents' => [
+        'fileuploaddone' => 'function(e, data) {
+                                console.log(e);
+                                console.log(data);
+                            }',
+        'fileuploadfail' => 'function(e, data) {
+                                console.log(e);
+                                console.log(data);
+                            }',
+    ],
+]); ?>
 
 <?php if ( isset($currentUser) && $currentUser->getId() != $user->getId() ):?>
     <?php if (!$user->isSubscriber($currentUser)): ?>
