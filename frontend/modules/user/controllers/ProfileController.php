@@ -104,8 +104,7 @@ class ProfileController extends Controller {
         }
         return ['success' => false, 'errors' => $model->getErrors()];
     }
-
-
+    
 //    public function actionGenerate()
 //    {
 //        $faker = \Faker\Factory::create();

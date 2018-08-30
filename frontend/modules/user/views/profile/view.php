@@ -17,7 +17,7 @@
 
 <hr>
 
-<img src="<?= $user->getPicture(); ?>" alt="avatar" id="profile-picture" width="150px">
+<img src="<?= $user->getPicture(); ?>" alt="avatar" id="profile-picture">
 
 <?php if ($currentUser->equals($user)): ?>
 
