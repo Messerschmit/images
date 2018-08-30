@@ -63,6 +63,10 @@ class ComposerStaticInit657dabece7195b8d198a1259493a99d3
         array (
             'Psr\\Http\\Message\\' => 17,
         ),
+        'I' => 
+        array (
+            'Intervention\\Image\\' => 19,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -190,6 +194,10 @@ class ComposerStaticInit657dabece7195b8d198a1259493a99d3
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Intervention\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (

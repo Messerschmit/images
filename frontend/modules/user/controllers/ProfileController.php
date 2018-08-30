@@ -8,6 +8,8 @@ use yii\web\NotFoundHttpException;
 use Yii;
 use frontend\modules\user\models\forms\PictureForm;
 use yii\web\UploadedFile;
+use yii\web\Response;
+use Intervention\Image\ImageManager;
 
 class ProfileController extends Controller {
     
@@ -82,6 +84,8 @@ class ProfileController extends Controller {
      */
     public function actionUploadPicture()
     {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        
         $model = new PictureForm();
         $model->picture = UploadedFile::getInstance($model, 'picture');
 
@@ -92,13 +96,13 @@ class ProfileController extends Controller {
             $user->picture = Yii::$app->storage->saveUploadedFile($model->picture);
             
             if ($user->save(false, ['picture'])){
-                print_r($user->attributes);die;
+                return [
+                    'success' => true,
+                    'pictureUri' => Yii::$app->storage->getFile($user->picture),
+                ];
             }
         }
-        
-        echo '<pre>';
-        print_r($model->getErrors());
-        echo '</pre>';
+        return ['success' => false, 'errors' => $model->getErrors()];
     }
 
 
