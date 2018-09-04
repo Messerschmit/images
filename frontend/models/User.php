@@ -329,5 +329,22 @@ class User extends ActiveRecord implements IdentityInterface
         
         return self::DEFAULT_IMAGE; 
     }
+    
+    /*
+
+     * Delete picture from user record and file system
+     * @return bool
+     *      */
+    public function deletePicture() {
+        
+        if ($this->picture && Yii::$app->storage->deleteUploadedFile($this->picture)){
+            
+            $this->picture = null;
+            
+            return $this->save(false, ['picture']);
+        }
+        
+        return false;
+    }
 
 }

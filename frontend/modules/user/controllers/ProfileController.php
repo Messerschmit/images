@@ -9,7 +9,6 @@ use Yii;
 use frontend\modules\user\models\forms\PictureForm;
 use yii\web\UploadedFile;
 use yii\web\Response;
-use Intervention\Image\ImageManager;
 
 class ProfileController extends Controller {
     
@@ -104,6 +103,30 @@ class ProfileController extends Controller {
         }
         return ['success' => false, 'errors' => $model->getErrors()];
     }
+    
+    /* 
+     * Handle profile image delete via ajax request 
+     */
+    public function actionDeletePicture() {
+        
+        if (Yii::$app->user->isGuest){
+            
+            return $this->redirect(['/user/default/login']);
+        }
+        
+        /* @var $currentUser User*/
+        $currentUser = Yii::$app->user->identity;
+        
+        if ($currentUser->deletePicture()){
+            Yii::$app->session->setFlash('success', 'Picture deleted');
+        } else {
+            Yii::$app->session->setFlash('danger', 'Error ocured'); 
+        }
+        
+        return $this->redirect(['/user/profile/view', 'nickname' => $currentUser->getNickname()]);
+    }
+    
+    
     
 //    public function actionGenerate()
 //    {
