@@ -5,8 +5,10 @@
         <group>
             <file>file:/Users/serhiikasatkin/Documents/VM/images/www/frontend/models/User.php</file>
             <file>file:/Users/serhiikasatkin/Documents/VM/images/www/frontend/modules/user/views/profile/view.php</file>
+            <file>file:/Users/serhiikasatkin/Documents/VM/images/www/frontend/modules/user/models/forms/PictureForm.php</file>
             <file>file:/Users/serhiikasatkin/Documents/VM/images/www/frontend/modules/user/controllers/ProfileController.php</file>
             <file>file:/Users/serhiikasatkin/Documents/VM/images/www/frontend/components/Storage.php</file>
+            <file>file:/Users/serhiikasatkin/Documents/VM/images/www/frontend/config/params.php</file>
         </group>
     </open-files>
 </project-private>

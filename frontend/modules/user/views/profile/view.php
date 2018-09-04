@@ -17,9 +17,9 @@
 
 <hr>
 
-<img src="<?= $user->getPicture(); ?>" alt="avatar" id="profile-picture">
+<img src="<?= $user->getPicture(); ?>" alt="avatar" id="profile-picture" width="300px">
 
-<?php if ($currentUser->equals($user)): ?>
+<?php if (isset($currentUser) && $currentUser->equals($user)): ?>
 
     <div class="alert alert-success display-none" id="profile-image-success">Profile image updated</div>
     <div class="alert alert-danger display-none" id="profile-image-fail"></div>
